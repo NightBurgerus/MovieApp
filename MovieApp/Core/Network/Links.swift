@@ -21,7 +21,7 @@ struct Links {
         // ID стран и жанров (для фильтрации)
         static let filters          = baseURL + "/\(version)/films/filters"
         // Фильмы по фильтрам
-        static let films            = baseURL + "/\(version)/films/films"
+        static let films            = baseURL + "/\(version)/films"
         // Поиск по ключевым словам
         static let searchByKeyword  = baseURL + "/\(version)/films/searchByKeyword"
         // Список цифровых релизов
