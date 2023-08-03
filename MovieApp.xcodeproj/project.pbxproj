@@ -12,6 +12,7 @@
 		4F36B7AA2A79073E0041EF89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F36B7A82A79073E0041EF89 /* Main.storyboard */; };
 		4F36B7AC2A7907410041EF89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F36B7AB2A7907410041EF89 /* Assets.xcassets */; };
 		4F36B7AF2A7907410041EF89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F36B7AD2A7907410041EF89 /* LaunchScreen.storyboard */; };
+		4F52411D2A7BF2FF00232090 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F52411C2A7BF2FF00232090 /* Protocols.swift */; };
 		4FB212B12A79111C0005CC8E /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB212B02A79111C0005CC8E /* Links.swift */; };
 		4FB212B32A791E010005CC8E /* ApiWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB212B22A791E010005CC8E /* ApiWorker.swift */; };
 		4FB212B62A791E890005CC8E /* LoadingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB212B52A791E890005CC8E /* LoadingError.swift */; };
@@ -26,7 +27,6 @@
 		4FB212CD2A7A59F10005CC8E /* FilmCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FB212CB2A7A59F10005CC8E /* FilmCollectionCell.xib */; };
 		4FB212D12A7A5D920005CC8E /* FilmModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB212D02A7A5D920005CC8E /* FilmModels.swift */; };
 		4FBCC4682A7AA3F800E4AE67 /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBCC4672A7AA3F800E4AE67 /* HomePageViewModel.swift */; };
-		4FBCC46B2A7AA53400E4AE67 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBCC46A2A7AA53400E4AE67 /* Protocols.swift */; };
 		4FBCC46E2A7AAA1000E4AE67 /* HomePageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBCC46D2A7AAA1000E4AE67 /* HomePageRepository.swift */; };
 		4FBCC4702A7B9A7800E4AE67 /* HomePageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBCC46F2A7B9A7800E4AE67 /* HomePageAssembly.swift */; };
 		4FBCC4722A7BA47300E4AE67 /* CellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBCC4712A7BA47300E4AE67 /* CellModels.swift */; };
@@ -42,6 +42,7 @@
 		4F36B7AB2A7907410041EF89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F36B7AE2A7907410041EF89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F36B7B02A7907410041EF89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F52411C2A7BF2FF00232090 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		4FB212B02A79111C0005CC8E /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		4FB212B22A791E010005CC8E /* ApiWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiWorker.swift; sourceTree = "<group>"; };
 		4FB212B52A791E890005CC8E /* LoadingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingError.swift; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		4FB212CB2A7A59F10005CC8E /* FilmCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmCollectionCell.xib; sourceTree = "<group>"; };
 		4FB212D02A7A5D920005CC8E /* FilmModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmModels.swift; sourceTree = "<group>"; };
 		4FBCC4672A7AA3F800E4AE67 /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
-		4FBCC46A2A7AA53400E4AE67 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		4FBCC46D2A7AAA1000E4AE67 /* HomePageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageRepository.swift; sourceTree = "<group>"; };
 		4FBCC46F2A7B9A7800E4AE67 /* HomePageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageAssembly.swift; sourceTree = "<group>"; };
 		4FBCC4712A7BA47300E4AE67 /* CellModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModels.swift; sourceTree = "<group>"; };
@@ -188,8 +188,8 @@
 				4FBCC4652A7AA3DC00E4AE67 /* ViewModels */,
 				4FB212CF2A7A5D820005CC8E /* Models */,
 				4FB212C92A7A59BC0005CC8E /* View */,
-				4FBCC46A2A7AA53400E4AE67 /* Protocols.swift */,
 				4FBCC46F2A7B9A7800E4AE67 /* HomePageAssembly.swift */,
+				4F52411C2A7BF2FF00232090 /* Protocols.swift */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -301,6 +301,7 @@
 				4FB212C82A793E470005CC8E /* LoadingIndicator.swift in Sources */,
 				4FB212C62A793B860005CC8E /* BaseViewController.swift in Sources */,
 				4FBCC4742A7BC2AB00E4AE67 /* URLSession.swift in Sources */,
+				4F52411D2A7BF2FF00232090 /* Protocols.swift in Sources */,
 				4FB212B62A791E890005CC8E /* LoadingError.swift in Sources */,
 				4F36B7A52A79073E0041EF89 /* SceneDelegate.swift in Sources */,
 				4FC5C35D2A7A61C900A41A15 /* HomePageViewController.swift in Sources */,
@@ -311,7 +312,6 @@
 				4FB212BA2A791EB50005CC8E /* MethodParameters.swift in Sources */,
 				4FBCC4702A7B9A7800E4AE67 /* HomePageAssembly.swift in Sources */,
 				4FB212B82A791E9D0005CC8E /* Response.swift in Sources */,
-				4FBCC46B2A7AA53400E4AE67 /* Protocols.swift in Sources */,
 				4FB212D12A7A5D920005CC8E /* FilmModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
