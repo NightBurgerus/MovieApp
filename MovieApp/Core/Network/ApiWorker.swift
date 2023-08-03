@@ -64,6 +64,7 @@ class NetworkRequest {
     private var request: URLRequest
     private var completion: ResponseCompletion
     private var allowsRedirect: Bool
+    private var isSync: Bool = false
 
     fileprivate init(request: URLRequest, parameters: [MethodParams] = []) {
         self.request = request
@@ -119,7 +120,8 @@ class NetworkRequest {
         
         let redirectManager = SessionRedirectManager(oldRequest: self.request, allowsRedirect: allowsRedirect)
         
-        let task = URLSession(configuration: sessionConfig, delegate: redirectManager, delegateQueue: delegateQueue).dataTask(with: request) { data, response, error in
+        
+        let completion: ((Data?, URLResponse?, Error?) -> ()) = { data, response, error in
             DispatchQueue.main.async {
                 if data == nil {
                     completion(.failure(.dataIsNil))
@@ -139,8 +141,23 @@ class NetworkRequest {
                 completion(.success(data!))
             }
         }
+        
+        let task = URLSession(configuration: sessionConfig, delegate: redirectManager, delegateQueue: delegateQueue).dataTask(with: request, completionHandler: completion)
         task.resume()
         return task
+    }
+    
+    func syncRequest(delegateQueue: OperationQueue? = nil) -> Data? {
+        configureRequest(&self.request)
+        
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.httpAdditionalHeaders = headers
+        
+        let redirectManager = SessionRedirectManager(oldRequest: self.request, allowsRedirect: allowsRedirect)
+      
+        let (data, _, _) = URLSession(configuration: sessionConfig, delegate: redirectManager, delegateQueue: delegateQueue).syncDataTask(with: request)
+    
+        return data
     }
 
     private func configureRequest(_ request: inout URLRequest) {
@@ -167,6 +184,8 @@ class NetworkRequest {
                 request.httpShouldUsePipelining = shouldUse
             case .networkServiceType(let networkServiceType):
                 request.networkServiceType = networkServiceType
+            case .synchronous:
+                self.isSync = true
             }
         }
     }
