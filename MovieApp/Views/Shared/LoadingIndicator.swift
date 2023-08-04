@@ -32,9 +32,9 @@ class LoadingIndicator: UIView {
     func stop() {
         let circle = fillingCircle()
         self.addSubview(circle)
-        UIView.animate(withDuration: 1, delay: 1) {
+        self.circle.layer.opacity = 0
+        UIView.animate(withDuration: 0.5, delay: 0.5) {
             circle.layer.opacity = 0
-            self.circle.layer.opacity = 0
             self.background.layer.opacity = 0
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -47,7 +47,8 @@ class LoadingIndicator: UIView {
     override func draw(_ rect: CGRect) {
         let bounds = UIScreen.main.bounds
         self.background = UIView(frame: CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height))
-        background.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        background.backgroundColor = UIColor.black
+        background.layer.opacity = 0.5
         
         drawСircle()
         
@@ -61,9 +62,10 @@ class LoadingIndicator: UIView {
     private func drawDashedСircle() -> UIView {
         let circleView = UIView()
         let bounds = UIScreen.main.bounds
-        let origin = CGPoint(x: bounds.width / 2 - size.width / 2, y: bounds.height / 2 - size.height / 2)
+        
         circleView.frame.size = size
-        circleView.frame.origin = origin
+        let center = CGPoint(x: bounds.midX, y: bounds.midY - circleView.frame.height)
+        circleView.center = center
         var rect = CGRect()
         rect.size = self.size
         
@@ -92,8 +94,8 @@ class LoadingIndicator: UIView {
     private func drawСircle(){
         let circleView = UIView()
         let bounds = UIScreen.main.bounds
-        let origin = CGPoint(x: bounds.width / 2 - size.width / 2, y: bounds.height / 2 - size.height / 2)
         circleView.frame.size = size
+        let origin = CGPoint(x: bounds.width / 2 - size.width / 2, y: 0)
         circleView.frame.origin = origin
         var rect = CGRect()
         rect.size = self.size
@@ -111,8 +113,9 @@ class LoadingIndicator: UIView {
     private func fillingCircle() -> UIView {
         let circleView = UIView()
         let bounds = UIScreen.main.bounds
-        let origin = CGPoint(x: bounds.width / 2 - size.width / 2, y: bounds.height / 2 - size.height / 2)
         circleView.frame.size = size
+        
+        let origin = CGPoint(x: bounds.width / 2 - size.width / 2, y: bounds.midY - circleView.frame.height * 1.5)
         circleView.frame.origin = origin
         
         fillingCircleLayer.strokeEnd = 0
